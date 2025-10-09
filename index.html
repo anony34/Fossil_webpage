@@ -125,9 +125,11 @@
   <h2>Abstract</h2>
   <p>Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.</p>
   <hr>
-  <img src="dice_coefficient_plot_1.jpg" alt="Description" class="center-image" />
-  <img src="dice_coefficient_plot_2.jpg" alt="Description" class="center-image" />
-  <img src="dice_coefficient_frozen.jpg" alt="Description" class="center-image" />
+   <div class="image-row">
+    <img src="dice_coefficient_plot_1.jpg" alt="Image 1">
+    <img src="dice_coefficient_plot_2.jpg" alt="Image 2">
+    <img src="dice_coefficient_frozen.jpg" alt="Image 3">
+  </div>
   <hr>
   <h2>FoSSIL Framework</h2>
 
