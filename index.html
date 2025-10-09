@@ -266,39 +266,39 @@
  <h2>Results</h2>
   <h3>Performance of baselines on Med FoSSIL-Disjoint benchmark (3 sessions)</h3>
 <p>Results are reported as Dice coefficients (0–1). <br>
-PD (Performance Drop Rate) = ((Session 0 − Session 2) / Session 0) × 100</p>
+PD (Performance Drop rate) = ((Session 0 − Session 2) / Session 0) × 100</p>
 
-<table border="1" cellpadding="5" cellspacing="0">
+<table style="border-collapse: collapse; width: 100%;">
   <thead>
     <tr>
-      <th>Method</th>
-      <th>Session 0</th>
-      <th>Session 1</th>
-      <th>Session 2</th>
-      <th>PD (↓)</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: left; padding: 6px;">Method</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Session 0</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Session 1</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Session 2</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">PD (↓)</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>PIFS</td><td>0.700</td><td>0.129</td><td>0.078</td><td>88.9</td></tr>
-    <tr><td>NC-FSCIL</td><td>0.394</td><td>0.077</td><td>0.081</td><td>79.4</td></tr>
-    <tr><td>CLIP-CT</td><td>0.475</td><td>0.186</td><td>0.141</td><td>70.3</td></tr>
-    <tr><td>MiB</td><td>0.700</td><td>0.271</td><td>0.096</td><td>86.3</td></tr>
-    <tr><td>MDIL</td><td>0.779</td><td>0.115</td><td>0.097</td><td>87.6</td></tr>
-    <tr><td>C-FSCIL</td><td>0.787</td><td>0.334</td><td>0.297</td><td>62.3</td></tr>
-    <tr><td>SoftNet</td><td>0.820</td><td>0.305</td><td>0.146</td><td>82.2</td></tr>
-    <tr><td>GAPS</td><td>0.700</td><td>0.334</td><td>0.253</td><td>63.9</td></tr>
-    <tr><td>FSCIL-SS</td><td>0.700</td><td>0.115</td><td>0.089</td><td>87.3</td></tr>
-    <tr><td>Subspace</td><td>0.257</td><td>0.054</td><td>0.040</td><td>84.4</td></tr>
-    <tr><td>Gen-Replay</td><td>0.700</td><td>0.076</td><td>0.102</td><td>85.4</td></tr>
-    <tr><td>FeCAM</td><td>0.700</td><td>0.048</td><td>0.042</td><td>94.0</td></tr>
-    <tr><td>FACT</td><td>0.357</td><td>0.071</td><td>0.028</td><td>92.2</td></tr>
-    <tr><td>MAML</td><td>0.700</td><td>0.001</td><td>0.059</td><td>91.6</td></tr>
-    <tr><td>MAML + Reg.</td><td>0.700</td><td>0.001</td><td>0.062</td><td>91.1</td></tr>
-    <tr><td>MTL</td><td>0.700</td><td>0.079</td><td>0.088</td><td>87.4</td></tr>
-    <tr><td>UnSupCL</td><td>0.700</td><td>0.039</td><td>0.088</td><td>87.4</td></tr>
-    <tr><td>SupCL</td><td>0.700</td><td>0.058</td><td>0.042</td><td>94.0</td></tr>
-    <tr><td>UnSupCL-HNM</td><td>0.700</td><td>0.035</td><td>0.068</td><td>90.3</td></tr>
-    <tr><td><strong>FoSSIL (U-Net)</strong></td><td>0.736</td><td><strong>0.460</strong></td><td><strong>0.398</strong></td><td><strong>45.9</strong></td></tr>
+    <tr><td style="padding: 6px;">PIFS</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.129</td><td style="text-align: center;">0.078</td><td style="text-align: center;">88.9</td></tr>
+    <tr><td style="padding: 6px;">NC-FSCIL</td><td style="text-align: center;">0.394</td><td style="text-align: center;">0.077</td><td style="text-align: center;">0.081</td><td style="text-align: center;">79.4</td></tr>
+    <tr><td style="padding: 6px;">CLIP-CT</td><td style="text-align: center;">0.475</td><td style="text-align: center;">0.186</td><td style="text-align: center;">0.141</td><td style="text-align: center;">70.3</td></tr>
+    <tr><td style="padding: 6px;">MiB</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.271</td><td style="text-align: center;">0.096</td><td style="text-align: center;">86.3</td></tr>
+    <tr><td style="padding: 6px;">MDIL</td><td style="text-align: center;">0.779</td><td style="text-align: center;">0.115</td><td style="text-align: center;">0.097</td><td style="text-align: center;">87.6</td></tr>
+    <tr><td style="padding: 6px;">C-FSCIL</td><td style="text-align: center;">0.787</td><td style="text-align: center;">0.334</td><td style="text-align: center;">0.297</td><td style="text-align: center;">62.3</td></tr>
+    <tr><td style="padding: 6px;">SoftNet</td><td style="text-align: center;">0.820</td><td style="text-align: center;">0.305</td><td style="text-align: center;">0.146</td><td style="text-align: center;">82.2</td></tr>
+    <tr><td style="padding: 6px;">GAPS</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.334</td><td style="text-align: center;">0.253</td><td style="text-align: center;">63.9</td></tr>
+    <tr><td style="padding: 6px;">FSCIL-SS</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.115</td><td style="text-align: center;">0.089</td><td style="text-align: center;">87.3</td></tr>
+    <tr><td style="padding: 6px;">Subspace</td><td style="text-align: center;">0.257</td><td style="text-align: center;">0.054</td><td style="text-align: center;">0.040</td><td style="text-align: center;">84.4</td></tr>
+    <tr><td style="padding: 6px;">Gen-Replay</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.076</td><td style="text-align: center;">0.102</td><td style="text-align: center;">85.4</td></tr>
+    <tr><td style="padding: 6px;">FeCAM</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.048</td><td style="text-align: center;">0.042</td><td style="text-align: center;">94.0</td></tr>
+    <tr><td style="padding: 6px;">FACT</td><td style="text-align: center;">0.357</td><td style="text-align: center;">0.071</td><td style="text-align: center;">0.028</td><td style="text-align: center;">92.2</td></tr>
+    <tr><td style="padding: 6px;">MAML</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.001</td><td style="text-align: center;">0.059</td><td style="text-align: center;">91.6</td></tr>
+    <tr><td style="padding: 6px;">MAML + Reg.</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.001</td><td style="text-align: center;">0.062</td><td style="text-align: center;">91.1</td></tr>
+    <tr><td style="padding: 6px;">MTL</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.079</td><td style="text-align: center;">0.088</td><td style="text-align: center;">87.4</td></tr>
+    <tr><td style="padding: 6px;">UnSupCL</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.039</td><td style="text-align: center;">0.088</td><td style="text-align: center;">87.4</td></tr>
+    <tr><td style="padding: 6px;">SupCL</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.058</td><td style="text-align: center;">0.042</td><td style="text-align: center;">94.0</td></tr>
+    <tr><td style="padding: 6px;">UnSupCL-HNM</td><td style="text-align: center;">0.700</td><td style="text-align: center;">0.035</td><td style="text-align: center;">0.068</td><td style="text-align: center;">90.3</td></tr>
+    <tr><td style="padding: 6px;"><strong>FoSSIL (U-Net)</strong></td><td style="text-align: center;">0.736</td><td style="text-align: center;"><strong>0.460</strong></td><td style="text-align: center;"><strong>0.398</strong></td><td style="text-align: center;"><strong>45.9</strong></td></tr>
   </tbody>
 </table>
 
