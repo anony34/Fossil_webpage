@@ -443,6 +443,64 @@ PD (Performance Drop rate) = ((Session 0 − Session 2) / Session 0) × 100.</p>
   </tbody>
 </table>
 
+   <h3>Performance of FoSSIL on the Semi-Supervised Natural-FoSSIL benchmark (which includes additional unlabeled data), evaluated across incremental sessions (BDD100K (Base) &rarr; Cityscapes &rarr; IDD &rarr; IDD (with different classes from the previous session)).</h3>
+<p><b>Seen</b> refers to the average performance on classes the model has encountered in previous sessions, while <b>New</b> refers to the average performance on classes introduced in the current session. Results are reported as mIoU (0–100). The reported results confirm that pseudo-label refinement (PRL) helps boost the performance.<br>
+<p>HM refers to Harmonic Mean.<br>
+
+  <table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th rowspan="2" style="border-bottom: 1px solid #ddd; text-align: left; padding: 6px;">Method</th>
+      <th colspan="3" style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Cityscapes</th>
+      <th colspan="3" style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">IDD</th>
+      <th colspan="3" style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">IDD</th>
+    </tr>
+    <tr>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Seen</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">New</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">HM</th>
+      
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Seen</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">New</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">HM</th>
+      
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">Seen</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">New</th>
+      <th style="border-bottom: 1px solid #ddd; text-align: center; padding: 6px;">HM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 6px;">FoSSIL + GAPS</td>
+      <td style="text-align: center;">27.33</td>
+      <td style="text-align: center;"><b>29.98</b></td>
+      <td style="text-align: center;">28.59</td>
+      
+      <td style="text-align: center;">26.00</td>
+      <td style="text-align: center;"><b>49.82</b></td>
+      <td style="text-align: center;">34.17</td>
+      
+      <td style="text-align: center;"><b>28.88</b></td>
+      <td style="text-align: center;">24.23</td>
+      <td style="text-align: center;">26.35</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px;">FoSSIL + GAPS w/o PLR</td>
+      <td style="text-align: center;">25.62</td>
+      <td style="text-align: center;">27.88</td>
+      <td style="text-align: center;">26.70</td>
+      
+      <td style="text-align: center;">23.46</td>
+      <td style="text-align: center;">41.50</td>
+      <td style="text-align: center;">29.97</td>
+      
+      <td style="text-align: center;">27.54</td>
+      <td style="text-align: center;">15.74</td>
+      <td style="text-align: center;">20.03</td>
+    </tr>
+  </tbody>
+</table>
+
 
 
     <hr>
