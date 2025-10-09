@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoSSIL: Continual Semantic Segmentation</title>
+  <title>FoSSIL: Continual Semantic Segmentation & Baselines</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,30 +11,20 @@
       margin: auto;
       padding: 20px;
       line-height: 1.6;
-      text-align: center;
     }
 
     h1, h2, h3 {
       color: #2c3e50;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 20px 0;
-      table-layout: fixed;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
+    h1 {
       text-align: center;
-      word-wrap: break-word;
+      margin-bottom: 20px;
     }
 
-    th {
-      background-color: #f2f2f2;
+    p {
+      text-align: justify;
     }
 
     a {
@@ -46,38 +36,72 @@
       text-decoration: underline;
     }
 
-    img {
-      display: block;
-      margin: 20px auto;
-      max-width: 100%;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
     }
 
-    p {
-      text-align: justify;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
     }
 
     .center {
       text-align: center;
+    }
+
+    .note {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    img {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    hr {
+      margin: 30px 0;
     }
   </style>
 </head>
 <body>
 
   <h1>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</h1>
-  <p class="center"><a href="https://github.com/anony34/FoSSIL/">[GitHub Code]</a></p>
+
+  <p class="center">
+    <a href="https://github.com/anony34/FoSSIL/">[GitHub Code]</a>
+  </p>
+
   <hr>
 
   <h2>Abstract</h2>
-  <p>
-    Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.
-  </p>
+  <p>Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.</p>
 
-  <h2>FoSSIL Datasets</h2>
+  <h2>Dataset Details</h2>
+  <h3>FoSSIL Datasets</h3>
   <table>
     <tr>
-      <th style="width:30%">Dataset</th>
-      <th style="width:50%">Description</th>
-      <th style="width:20%">Download</th>
+      <th>Dataset</th>
+      <th>Description</th>
+      <th>Download</th>
     </tr>
     <tr>
       <td>Med FoSSIL-Disjoint</td>
@@ -111,16 +135,16 @@
     </tr>
   </table>
 
-  <h3>Incremental Sessions (Example)</h3>
+  <h3>Incremental Sessions</h3>
   <table>
     <tr>
-      <th style="width:20%">Setting</th>
-      <th style="width:13%">Session 0</th>
-      <th style="width:13%">Session 1</th>
-      <th style="width:13%">Session 2</th>
-      <th style="width:13%">Session 3</th>
-      <th style="width:13%">Session 4</th>
-      <th style="width:15%">Session 5</th>
+      <th>Setting</th>
+      <th>Session 0 (Base)</th>
+      <th>Session 1</th>
+      <th>Session 2</th>
+      <th>Session 3</th>
+      <th>Session 4</th>
+      <th>Session 5</th>
     </tr>
     <tr>
       <td>Med FoSSIL-Disjoint</td>
@@ -170,7 +194,59 @@
   </table>
 
   <h2>Results</h2>
-  <img src="images/results.png" alt="Results Table">
+  <img src="images/results.png" alt="Results Table" width="600">
+
+  <hr>
+
+  <h2>Baselines and Related Methods</h2>
+
+  <h3>Class-Incremental Semantic Segmentation</h3>
+  <ul>
+    <li><a href="https://github.com/fcdl94/MiB">MiB</a>: A class-incremental learning method for semantic segmentation in natural images.</li>
+    <li><a href="https://github.com/MrGiovanni/ContinualLearning">CLIP-CT</a>: A continual learning method for abdominal <em>multi-organ</em> and <em>tumour segmentation</em>.</li>
+    <li><a href="https://github.com/jinpeng0528/STAR">Saving100x</a>: Leverages <em>prototype replay</em> for incremental semantic segmentation.</li>
+    <li><a href="https://github.com/zhu-gl-ux/Adapter">Adaptive Prototype</a>: Updates <em>prototypes</em> adaptively for class-incremental learning.</li>
+  </ul>
+  <p class="note">These methods cannot handle few-shot learning and domain shifts.</p>
+
+  <h3>Domain-Incremental Learning</h3>
+  <ul>
+    <li><a href="https://github.com/prachigarg23/MDIL-SS">MDIL</a>: Uses multiple decoders for different domains with a shared encoder.</li>
+  </ul>
+  <p class="note">Separate decoder per domain limits scalability; cannot handle few-shot incremental classes.</p>
+
+  <h3>Few-shot Class-Incremental Learning</h3>
+  <ul>
+    <li><a href="https://github.com/fcdl94/FSS">PIFS</a>: Prototype-based few-shot CIL.</li>
+    <li><a href="https://github.com/feyzaakyurek/subspace-reg">Subspace</a>: Regularization-based few-shot CIL.</li>
+    <li><a href="https://github.com/IBM/constrained-FSCIL">C-FSCIL</a>: Meta-learning for few-shot CIL.</li>
+    <li><a href="https://github.com/LAMDA-CL/CVPR22-Fact">FACT</a>: Reserves embedding space for new classes.</li>
+    <li><a href="https://github.com/NeuralCollapseApplications/FSCIL">NC-FSCIL</a>: Fixes classifier as simplex ETF (Zhong et al.)</li>
+    <li><a href="https://github.com/mobaidoctor/med-ddpm">Gen-Replay</a>: Data-free replay using diffusion model for 3D volumes.</li>
+    <li><a href="https://github.com/RogerQi/GAPS">GAPS</a>: Guided copy-paste augmentation.</li>
+    <li><a href="https://github.com/ihaeyong/SoftNet-FSCIL">SoftNet</a>: Learns model weights & adaptive soft masks.</li>
+    <li><a href="https://github.com/ChasonJiang/FSCILSS">FSCIL-SS</a>: Pseudo-labeling & knowledge distillation.</li>
+    <li><a href="https://github.com/dipamgoswami/FeCAM">FeCAM</a>: Enhances class prototype representation; evaluates domain-incremental learning separately.</li>
+  </ul>
+  <p class="note">These methods cannot handle domain shifts jointly with class-incremental and few-shot learning.</p>
+
+  <h3>Semi-Supervised Based Methods</h3>
+  <ul>
+    <li><a href="https://github.com/decile-team/cords">RETRIEVE</a>: Robust semi-supervised learning via coreset selection.</li>
+    <li><a href="https://github.com/kangzhiq/NNCSL">NNCSL</a>: Nearest-neighbor based continual semi-supervised learning.</li>
+    <li><a href="https://github.com/yawencui/UaD-ClE">UaD-CE</a>: Class Equilibrium + Uncertainty-aware Distillation.</li>
+    <li><a href="https://github.com/PanLiuCSU/CSL">CSL</a>: Pseudo-label selection as convex optimization.</li>
+  </ul>
+  <p class="note">Cannot jointly address domain shifts, class-incremental, and few-shot learning.</p>
+
+  <h3>Others (Representation Learning, Few-shot Learning, Meta-Learning, Active Learning, Domain-shift)</h3>
+  <ul>
+    <li><a href="https://github.com/google-research/google-research/tree/master/supcon">SupCL</a>, <a href="https://github.com/google-research/simclr">UnSupCL</a>, <a href="https://github.com/joshr17/HCL">UnSupCL-HNM</a>: Contrastive learning methods.</li>
+    <li><a href="https://github.com/AI-secure/multi-task-learning">MTL</a>: Fast adaptation to unseen tasks; few-shot learning.</li>
+    <li><a href="https://github.com/CEA-LIST/MetaMTReg">MAML</a>: Multi-task representation learning; few-shot learning.</li>
+    <li><a href="https://github.com/ljwztc/CLIP-Driven-Universal-Model">CLIP-driven</a>: Language-Vision model for organ segmentation & tumor detection.</li>
+    <li><a href="https://github.com/paolomandica/HALO">HALO</a>: Hyperbolic NN for pixel-level active learning under domain shift.</li>
+  </ul>
 
 </body>
 </html>
