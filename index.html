@@ -3,124 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</title>
-  <link rel="stylesheet" href="style.css">
+  <title>FoSSIL: Continual Semantic Segmentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.6;
+      text-align: center; /* Align all text to center */
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    h1 {
+      margin-bottom: 25px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 20px auto; /* Center tables */
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center; /* Center content in table cells */
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+    p {
+      text-align: justify; /* Justify paragraph text for readability */
+    }
+  </style>
 </head>
-
 <body>
-  <center>
-    <h1>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</h1>
 
-   <a href="https://github.com/anony34/FoSSIL/">[GitHub Code]</a>
-  </center>
-
+  <h1>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</h1>
+  <p><a href="https://github.com/anony34/FoSSIL/">[GitHub Code]</a></p>
   <hr>
 
   <h2>Abstract</h2>
-  <p>Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.</p>
+  <p>
+    Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints.
+  </p>
+  <p>
+    We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts.
+  </p>
+  <p>
+    For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.
+  </p>
 
-  <h2>Dataset details</h2>
- <h2>FoSSIL Datasets</h2>
+  <h2>FoSSIL Datasets</h2>
+  <table>
+    <tr>
+      <th>Dataset</th>
+      <th>Description</th>
+      <th>Download</th>
+    </tr>
+    <tr>
+      <td>Med FoSSIL-Disjoint</td>
+      <td>Disjoint classes & medical domains across sessions</td>
+      <td><a href="https://zenodo.org/records/17218309">Zenodo</a></td>
+    </tr>
+    <tr>
+      <td>Med FoSSIL-Mixed</td>
+      <td>Classes & domains may reappear; multi-domain per session</td>
+      <td><a href="https://zenodo.org/records/17297404">Zenodo</a></td>
+    </tr>
+    <tr>
+      <td>Med Semi-Supervised-FoSSIL</td>
+      <td>Incremental classes with unlabeled data</td>
+      <td><a href="https://zenodo.org/records/17218309">Zenodo</a></td>
+    </tr>
+    <tr>
+      <td>Natural-FoSSIL</td>
+      <td>Multiple driving domains; class-incremental & FSCIL</td>
+      <td><a href="https://zenodo.org/records/17255889">Zenodo</a></td>
+    </tr>
+    <tr>
+      <td>Semi-Supervised Natural-FoSSIL</td>
+      <td>Incremental classes with unlabeled data</td>
+      <td><a href="https://zenodo.org/records/17255889">Zenodo</a></td>
+    </tr>
+    <tr>
+      <td>Detection</td>
+      <td>Multi-domain COCO-O dataset for detection</td>
+      <td><a href="https://drive.google.com/file/d/1aBfIJN0zo_i80Hv4p7Ch7M8pRzO37qbq/view?usp=drive_link">Google Drive</a></td>
+    </tr>
+  </table>
 
-<table>
+  <h3>Incremental Sessions (Example)</h3>
+  <table>
     <tr>
-        <th>Dataset</th>
-        <th>Description</th>
-        <th>Download</th>
+      <th>Setting</th>
+      <th>Session 0 (Base)</th>
+      <th>Session 1</th>
+      <th>Session 2</th>
+      <th>Session 3</th>
+      <th>Session 4</th>
+      <th>Session 5</th>
     </tr>
     <tr>
-        <td>Med FoSSIL-Disjoint</td>
-        <td>Disjoint classes & medical domains across sessions</td>
-        <td><a href="https://zenodo.org/records/17218309">Zenodo</a></td>
+      <td>Med FoSSIL-Disjoint</td>
+      <td>15 (TS)</td>
+      <td>5 (AMOS)</td>
+      <td>6 (BCV)</td>
+      <td>4 (MOTS)</td>
+      <td>3 (BraTS)</td>
+      <td>4 (VerSe)</td>
     </tr>
     <tr>
-        <td>Med FoSSIL-Mixed</td>
-        <td>Classes & domains may reappear; multi-domain per session</td>
-        <td><a href="https://zenodo.org/records/17297404">Zenodo</a></td>
+      <td>Med FoSSIL-Mixed</td>
+      <td>10 (AMOS)</td>
+      <td>8 (BCV, MOTS)</td>
+      <td>6 (TS, AMOS)</td>
+      <td>4 (MOTS, TS)</td>
+      <td>7 (BraTS, VerSe)</td>
+      <td>--</td>
     </tr>
     <tr>
-        <td>Med Semi-Supervised-FoSSIL</td>
-        <td>Incremental classes with unlabeled data</td>
-        <td><a href="https://zenodo.org/records/17218309">Zenodo</a></td>
+      <td>Med SS-FoSSIL</td>
+      <td>15 (TS)</td>
+      <td>5 (AMOS)</td>
+      <td>6 (BCV)</td>
+      <td>4 (MOTS)</td>
+      <td>3 (BraTS)</td>
+      <td>4 (VerSe)</td>
     </tr>
     <tr>
-        <td>Natural-FoSSIL</td>
-        <td>Multiple driving domains; class-incremental & FSCIL</td>
-        <td><a href="https://zenodo.org/records/17255889">Zenodo</a></td>
+      <td>Natural-FoSSIL</td>
+      <td>10 (BDD)</td>
+      <td>5 (IDD)</td>
+      <td>5 (BDD, IDD)</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
     </tr>
     <tr>
-        <td>Semi-Supervised Natural-FoSSIL</td>
-        <td>Incremental classes with unlabeled data</td>
-        <td><a href="https://zenodo.org/records/17255889">Zenodo</a></td>
+      <td>SS Natural-FoSSIL</td>
+      <td>10 (BDD)</td>
+      <td>2 (Cityscapes)</td>
+      <td>2 (IDD)</td>
+      <td>3 (IDD)</td>
+      <td>--</td>
+      <td>--</td>
     </tr>
-    <tr>
-        <td>Detection</td>
-        <td>Multi-domain COCO-O dataset for detection</td>
-        <td><a href="https://drive.google.com/file/d/1aBfIJN0zo_i80Hv4p7Ch7M8pRzO37qbq/view?usp=drive_link">Google Drive</a></td>
-    </tr>
-</table>
-
-<h3>Incremental Sessions (Example)</h3>
-<table>
-    <tr>
-        <th>Setting</th>
-        <th>Session 0 (Base)</th>
-        <th>Session 1</th>
-        <th>Session 2</th>
-        <th>Session 3</th>
-        <th>Session 4</th>
-        <th>Session 5</th>
-    </tr>
-    <tr>
-        <td>Med FoSSIL-Disjoint</td>
-        <td>15 (TS)</td>
-        <td>5 (AMOS)</td>
-        <td>6 (BCV)</td>
-        <td>4 (MOTS)</td>
-        <td>3 (BraTS)</td>
-        <td>4 (VerSe)</td>
-    </tr>
-    <tr>
-        <td>Med FoSSIL-Mixed</td>
-        <td>10 (AMOS)</td>
-        <td>8 (BCV, MOTS)</td>
-        <td>6 (TS, AMOS)</td>
-        <td>4 (MOTS, TS)</td>
-        <td>7 (BraTS, VerSe)</td>
-        <td>--</td>
-    </tr>
-    <tr>
-        <td>Med SS-FoSSIL</td>
-        <td>15 (TS)</td>
-        <td>5 (AMOS)</td>
-        <td>6 (BCV)</td>
-        <td>4 (MOTS)</td>
-        <td>3 (BraTS)</td>
-        <td>4 (VerSe)</td>
-    </tr>
-    <tr>
-        <td>Natural-FoSSIL</td>
-        <td>10 (BDD)</td>
-        <td>5 (IDD)</td>
-        <td>5 (BDD, IDD)</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-    </tr>
-    <tr>
-        <td>SS Natural-FoSSIL</td>
-        <td>10 (BDD)</td>
-        <td>2 (Cityscapes)</td>
-        <td>2 (IDD)</td>
-        <td>3 (IDD)</td>
-        <td>--</td>
-        <td>--</td>
-    </tr>
-</table>
+  </table>
 
   <h2>Results</h2>
-  <img src="images/results.png" alt="Results Table" width="600">
-
+  <img src="images/results.png" alt="Results Table">
 
 </body>
 </html>
