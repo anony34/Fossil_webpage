@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FoSSIL: Continual Semantic Segmentation & Baselines</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -95,6 +99,52 @@
   <h2>Abstract</h2>
   <p>Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.</p>
 
+   <h2>FoSSIL Framework</h2>
+
+  <h3>Problem Definition</h3>
+  <p>We formalize the multi-constrained continual learning problem for semantic segmentation as a sequence of sessions 
+  \( \mathcal{S} = \{\mathcal{S}_0, \mathcal{S}_1, \dots, \mathcal{S}_T\} \) where each session \( \mathcal{S}_t \) has a semantic class space \( \mathcal{C}_t \) and domain distribution \( \mathcal{D}_t \). Each session has a dataset 
+  \( \mathbb{D}_t = \{(x_i, y_i)\}_{i=1}^{N_t} \) with input images \( x_i \in \mathcal{X} \) and pixel-wise labels \( y_i \in \mathcal{Y}_t \subseteq \mathcal{C}_t \).</p>
+
+  <h3>Classes, Domains, and Data Across Sessions</h3>
+  <ul>
+    <li><b>Same Classes, Different Domains:</b> \( \mathcal{C}_t = \mathcal{C}_{t'} \), \( \mathcal{D}_t \neq \mathcal{D}_{t'} \)</li>
+    <li><b>Different Classes, Same Domain:</b> \( \mathcal{C}_t \neq \mathcal{C}_{t'} \), \( \mathcal{D}_t = \mathcal{D}_{t'} \)</li>
+    <li><b>Different Classes, Different Domain:</b> \( \mathcal{C}_t \neq \mathcal{C}_{t'} \), \( \mathcal{D}_t \neq \mathcal{D}_{t'} \)</li>
+  </ul>
+
+  <h3>Few-shot Learning</h3>
+  <p>Incremental sessions (\( t \neq 0 \)) have few-shot labeled data \( N_t \ll N_0 \), with \( N_t = K \cdot |\mathcal{C}_t| \), where \( K \in \{5,10,20,30\} \). Each session may also access unlabeled data \( \mathcal{U}_t = \{x_j^{(u)}\}_{j=1}^{M_t} \), where \( M_t \gg N_t \).</p>
+
+  <h3>Exemplar-Free Prototype Replay</h3>
+  <p>For each class \( c \in \mathcal{C}_t \), a compact prototype is extracted from the feature space using a model feature extractor \( \phi \). For each sample \( (x_i, y_i) \), the embedding is \( E_i = \phi(x_i) \). The class prototype is computed as:</p>
+  <p class="math">\( p_c^{(i)} = \frac{1}{|\mathcal{F}_c^{(i)}|} \sum_{\mathbf{f} \in \mathcal{F}_c^{(i)}} \mathbf{f} \)</p>
+  <p class="math">\( P_c = \frac{1}{NS_c} \sum_{j \in NS_c} \frac{p_c^{(j)}}{\|p_c^{(j)}\|_2} \)</p>
+  <p>The prototype replay loss is:</p>
+  <p class="math">\( \mathcal{L}_{\text{proto}} = \sum_{P_c \in \mathcal{P}_t} \mathcal{L}_{\text{CE}}(F(P_c), c) \)</p>
+
+  <h3>Guided Noise Injection</h3>
+  <p>Weights are perturbed according to gradient-based guidance:</p>
+  <p class="math">\( G_{ij}^{-1} = \frac{1}{G_{ij} + \epsilon} \)</p>
+  <p class="math">\( \tilde{G}_{ij}^{-1} = \frac{1 + G_{ij}^{-1} - \min(G^{-1})}{1 + \max(G^{-1}) - \min(G^{-1})} \)</p>
+  <p class="math">\( \tilde{\mathbb{W}} = \mathbb{W} + \tilde{G}^{-1} \odot \mathcal{N}(0, I) \)</p>
+
+  <h3>Prototype-Guided Pseudo-Label Refinement</h3>
+  <p>For unlabeled data \( x_j^{(u)} \), the student and teacher networks generate pseudo-labels:</p>
+  <p class="math">\( \hat{y}_s, \mathcal{F}_s = M_s(x_j^{(u)}), \quad \hat{y}_t, \mathcal{F}_t = M_t(x_j^{(u)}) \)</p>
+  <p>Pseudo-labels are retained if confidence and feature similarity meet thresholds:</p>
+  <p class="math">\( \text{valid}(p,q) = (\text{conf}(p,q) > \tau_{\text{conf}}) \land (\text{sim}(p,q) > \tau_{\text{sim}}) \)</p>
+  <p>Consistency loss on validated pixels:</p>
+  <p class="math">\( \mathcal{L}_{\text{consistency}} = \frac{1}{|\mathcal{V}|} \sum_{(p,q) \in \mathcal{V}} \|\hat{y}_s(p,q) - \hat{y}_t(p,q)\|_2^2 \)</p>
+
+
+
+
+  
+
+
+
+  
   <h2>Dataset Details</h2>
   <h3>FoSSIL Datasets</h3>
   <table>
