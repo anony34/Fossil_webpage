@@ -11,44 +11,49 @@
       margin: auto;
       padding: 20px;
       line-height: 1.6;
-      text-align: center; /* Align all text to center */
+      text-align: center;
     }
+
     h1, h2, h3 {
       color: #2c3e50;
       margin-bottom: 15px;
     }
-    h1 {
-      margin-bottom: 25px;
-    }
+
     table {
       border-collapse: collapse;
-      width: 90%;
-      margin: 20px auto; /* Center tables */
+      width: 100%; /* Full width */
+      margin: 20px 0;
+      table-layout: fixed; /* Fixed layout for proper alignment */
     }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
+
     th, td {
+      border: 1px solid #ddd;
       padding: 10px;
-      text-align: center; /* Center content in table cells */
+      text-align: center; /* Center text in cells */
+      word-wrap: break-word; /* Wrap long text */
     }
+
     th {
       background-color: #f2f2f2;
     }
+
     a {
       color: #2980b9;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     img {
       display: block;
       margin: 20px auto;
       max-width: 100%;
     }
+
     p {
-      text-align: justify; /* Justify paragraph text for readability */
+      text-align: justify;
     }
   </style>
 </head>
@@ -72,9 +77,9 @@
   <h2>FoSSIL Datasets</h2>
   <table>
     <tr>
-      <th>Dataset</th>
-      <th>Description</th>
-      <th>Download</th>
+      <th style="width:30%">Dataset</th>
+      <th style="width:50%">Description</th>
+      <th style="width:20%">Download</th>
     </tr>
     <tr>
       <td>Med FoSSIL-Disjoint</td>
@@ -111,13 +116,13 @@
   <h3>Incremental Sessions (Example)</h3>
   <table>
     <tr>
-      <th>Setting</th>
-      <th>Session 0 (Base)</th>
-      <th>Session 1</th>
-      <th>Session 2</th>
-      <th>Session 3</th>
-      <th>Session 4</th>
-      <th>Session 5</th>
+      <th style="width:20%">Setting</th>
+      <th style="width:13%">Session 0</th>
+      <th style="width:13%">Session 1</th>
+      <th style="width:13%">Session 2</th>
+      <th style="width:13%">Session 3</th>
+      <th style="width:13%">Session 4</th>
+      <th style="width:15%">Session 5</th>
     </tr>
     <tr>
       <td>Med FoSSIL-Disjoint</td>
