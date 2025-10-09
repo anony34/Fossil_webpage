@@ -1,101 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoSSIL: Continual Semantic Segmentation</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        line-height: 1.6;
-        max-width: 1200px;
-    }
-    h1, h2, h3, h4 {
-        color: #2c3e50;
-    }
-    h1 {
-        text-align: center;
-    }
-    img {
-        display: block;
-        margin: 20px auto;
-        max-width: 100%;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-    table, th, td {
-        border: 1px solid #ddd;
-    }
-    th, td {
-        padding: 8px;
-        text-align: center;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    pre {
-        background-color: #f4f4f4;
-        padding: 10px;
-        overflow-x: auto;
-        border-radius: 5px;
-    }
-    code {
-        background-color: #f4f4f4;
-        padding: 2px 4px;
-        border-radius: 3px;
-    }
-    a {
-        color: #2980b9;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-    ul {
-        margin: 0 0 20px 20px;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <center>
+    <h1>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</h1>
 
-<h1>FoSSIL: A Unified Framework for Continual Semantic Segmentation in 2D and 3D Domains</h1>
+   <a href="https://github.com/anony34/FoSSIL/">[GitHub Code]</a>
+  </center>
 
-<img src="FOSSIL_image.jpg" alt="FoSSIL Image" width="400">
+  <hr>
 
-<p>Continual semantic segmentation is a challenging and underexplored problem in both 2D and 3D domains. The difficulty arises when classes and domains evolve over time, with incremental classes having only a few labeled samples. Models must handle:</p>
+  <h2>Abstract</h2>
+  <p>Continual semantic segmentation remains an underexplored area in both 2D and 3D domains. The problem becomes particularly challenging when classes and domains evolve over time, with incremental classes having only a few labeled samples. In this setting, the model must simultaneously address catastrophic forgetting of old classes, overfitting due to the limited labeled data of new classes, and domain shifts arising from changes in data distribution. Existing methods fail to simultaneously address these real-world constraints. We introduce the FoSSIL framework, which integrates guided noise injection and prototype-guided pseudo-label refinement (PLR) to enhance continual learning across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios. Guided noise injection perturbs parameters with overfitted or saturated gradients more strongly, while perturbing parameters with highly changing or large gradients less, preserving critical weights, allowing less critical parameters to explore alternative solutions in the parameter space, mitigating forgetting, reducing overfitting, and improving robustness to domain shifts. For incremental classes with unlabeled data, PLR enables semi-supervised learning by refining pseudo-labels and filtering out incorrect high-confidence predictions, ensuring reliable supervision for incremental classes. Together, these components work synergistically to enhance stability, generalization, and continual learning across all learning regimes.</p>
 
-<ul>
-    <li><strong>Catastrophic forgetting</strong> of old classes</li>
-    <li><strong>Overfitting</strong> on few labeled samples for new classes</li>
-    <li><strong>Domain shifts</strong> due to distribution changes</li>
-</ul>
-
-<p>Existing approaches fail to address all these constraints simultaneously. <strong>FoSSIL</strong> integrates:</p>
-
-<h3>1. Guided Noise Injection (GNI)</h3>
-<ul>
-    <li>Perturbs overfitted or saturated parameters more strongly</li>
-    <li>Perturbs highly-changing parameters less</li>
-    <li>Preserves critical weights while allowing less critical ones to explore</li>
-    <li>Reduces forgetting, overfitting, and improves robustness</li>
-</ul>
-
-<h3>2. Prototype-Guided Pseudo-Label Refinement (PLR)</h3>
-<ul>
-    <li>Refines pseudo-labels for incremental classes with unlabeled data</li>
-    <li>Filters out unreliable high-confidence predictions</li>
-    <li>Provides reliable supervision for semi-supervised incremental learning</li>
-</ul>
-
-<p>These components work synergistically to improve <strong>stability, generalization, and continual learning</strong> across class-incremental (CIL), domain-incremental (DIL), and few-shot scenarios.</p>
-
-<hr>
-
-<h2>FoSSIL Datasets</h2>
+  <h2>Dataset details</h2>
+ <h2>FoSSIL Datasets</h2>
 
 <table>
     <tr>
@@ -192,3 +117,10 @@
         <td>--</td>
     </tr>
 </table>
+
+  <h2>Results</h2>
+  <img src="images/results.png" alt="Results Table" width="600">
+
+
+</body>
+</html>
