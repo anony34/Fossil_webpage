@@ -263,6 +263,45 @@
   </table>
 
   <hr>
+ <h2>Results</h2>
+  <h3>Performance of baselines on Med FoSSIL-Disjoint benchmark (3 sessions)</h3>
+<p>Results are reported as Dice coefficients (0–1). <br>
+<strong>PD (Performance Drop Rate)</strong> = ((Session 0 − Session 2) / Session 0) × 100</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Session 0</th>
+      <th>Session 1</th>
+      <th>Session 2</th>
+      <th>PD (↓ %)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>PIFS</td><td>0.700</td><td>0.129</td><td>0.078</td><td>88.9</td></tr>
+    <tr><td>NC-FSCIL</td><td>0.394</td><td>0.077</td><td>0.081</td><td>79.4</td></tr>
+    <tr><td>CLIP-CT</td><td>0.475</td><td>0.186</td><td>0.141</td><td>70.3</td></tr>
+    <tr><td>MiB</td><td>0.700</td><td>0.271</td><td>0.096</td><td>86.3</td></tr>
+    <tr><td>MDIL</td><td>0.779</td><td>0.115</td><td>0.097</td><td>87.6</td></tr>
+    <tr><td>C-FSCIL</td><td>0.787</td><td>0.334</td><td>0.297</td><td>62.3</td></tr>
+    <tr><td>SoftNet</td><td>0.820</td><td>0.305</td><td>0.146</td><td>82.2</td></tr>
+    <tr><td>GAPS</td><td>0.700</td><td>0.334</td><td>0.253</td><td>63.9</td></tr>
+    <tr><td>FSCIL-SS</td><td>0.700</td><td>0.115</td><td>0.089</td><td>87.3</td></tr>
+    <tr><td>Subspace</td><td>0.257</td><td>0.054</td><td>0.040</td><td>84.4</td></tr>
+    <tr><td>Gen-Replay</td><td>0.700</td><td>0.076</td><td>0.102</td><td>85.4</td></tr>
+    <tr><td>FeCAM</td><td>0.700</td><td>0.048</td><td>0.042</td><td>94.0</td></tr>
+    <tr><td>FACT</td><td>0.357</td><td>0.071</td><td>0.028</td><td>92.2</td></tr>
+    <tr><td>MAML</td><td>0.700</td><td>0.001</td><td>0.059</td><td>91.6</td></tr>
+    <tr><td>MAML + Reg.</td><td>0.700</td><td>0.001</td><td>0.062</td><td>91.1</td></tr>
+    <tr><td>MTL</td><td>0.700</td><td>0.079</td><td>0.088</td><td>87.4</td></tr>
+    <tr><td>UnSupCL</td><td>0.700</td><td>0.039</td><td>0.088</td><td>87.4</td></tr>
+    <tr><td>SupCL</td><td>0.700</td><td>0.058</td><td>0.042</td><td>94.0</td></tr>
+    <tr><td>UnSupCL-HNM</td><td>0.700</td><td>0.035</td><td>0.068</td><td>90.3</td></tr>
+    <tr><td><strong>FoSSIL (U-Net)</strong></td><td>0.736</td><td><strong>0.460</strong></td><td><strong>0.398</strong></td><td><strong>45.9</strong></td></tr>
+  </tbody>
+</table>
+
 
   <h2>Baselines</h2>
 
