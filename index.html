@@ -360,10 +360,11 @@ PD (Performance Drop rate) = ((Session 0 − Session 2) / Session 0) × 100.</p>
   </tbody>
 </table>
 
-    <h3>Performance of FoSSIL on Med FoSSIL-Disjoint and Med Semi-Supervised-FoSSIL (a variant of Med FoSSIL-Disjoint with additional unlabeled data) benchmark datasets</h3>
-<p>SS - semi-supervised. HM - harmonic mean<br>
-<p>Results are reported as Dice coefficients (0–1). <br>
-<table style="border-collapse: collapse; width: 100%;">
+    <h3>Performance of FoSSIL on the Med FoSSIL-Disjoint benchmark and its variant, Med Semi-Supervised-FoSSIL (which includes additional unlabeled data), evaluated across incremental sessions (AMOS &rarr; BCV &rarr; MOTS &rarr; BraTS  &rarr; VerSe).</h3>
+<p>Seen refers to the average performance on classes the model has encountered in previous sessions, while New refers to the average performance on classes introduced in the current session. Results are reported as Dice coefficients (0–1). The reported results confirm that unlabeled data helps to boost the performance.<br>
+<p>SS - Semi-Supervised. <br>
+  <p>HM - Harmonic Mean. <br>
+  <table style="border-collapse: collapse; width: 100%;">
   <thead>
     <tr>
       <th rowspan="2" style="border-bottom: 1px solid #ddd; text-align: left; padding: 6px;">Method</th>
