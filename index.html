@@ -622,59 +622,59 @@ PD (Performance Drop rate) = ((Session 0 − Session 2) / Session 0) × 100.</p>
 
     <hr>
 <h2><Cost Analysis</h2>
-    <table>
-        <caption>Cost Analysis</caption>
-        <thead>
-            <tr>
-                <th rowspan="2">Setting</th>
-                <th colspan="2">Parameters</th>
-                <th colspan="2">FLOPs</th>
-                <th colspan="2">Training Time</th>
-            </tr>
-            <tr>
-                <th>FoSSIL</th>
-                <th>w/o FoSSIL</th>
-                <th>FoSSIL</th>
-                <th>w/o FoSSIL</th>
-                <th>FoSSIL</th>
-                <th>w/o FoSSIL</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Med_FoSSIL-Disjoint</td>
-                <td>16.27M</td>
-                <td>16.27M</td>
-                <td>0.52T</td>
-                <td>0.52T</td>
-                <td>4hrs 6mins</td>
-                <td>4hrs 5mins</td>
-            </tr>
-            <tr>
-                <td>Med_Semi-Supervised-FoSSIL</td>
-                <td>39.59M</td>
-                <td>39.59M</td>
-                <td>1.1T</td>
-                <td>1.1T</td>
-                <td>5hrs 18mins</td>
-                <td>5hrs 8mins</td>
-            </tr>
-            <tr>
-                <td>Natural-FoSSIL (SAM vit-b)</td>
-                <td>88.9M</td>
-                <td>88.9M</td>
-                <td>0.37T</td>
-                <td>0.37T</td>
-                <td>1hrs 43mins</td>
-                <td>1hrs 35mins</td>
-            </tr>
-        </tbody>
-    </table>
+    
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #ddd; padding: 6px;" rowspan="2">Setting</th>
+      <th style="border: 1px solid #ddd; padding: 6px;" colspan="2">Parameters</th>
+      <th style="border: 1px solid #ddd; padding: 6px;" colspan="2">FLOPs</th>
+      <th style="border: 1px solid #ddd; padding: 6px;" colspan="2">Training Time</th>
+    </tr>
+    <tr>
+      <th style="border: 1px solid #ddd; padding: 6px;">FoSSIL</th>
+      <th style="border: 1px solid #ddd; padding: 6px;">w/o FoSSIL</th>
+      <th style="border: 1px solid #ddd; padding: 6px;">FoSSIL</th>
+      <th style="border: 1px solid #ddd; padding: 6px;">w/o FoSSIL</th>
+      <th style="border: 1px solid #ddd; padding: 6px;">FoSSIL</th>
+      <th style="border: 1px solid #ddd; padding: 6px;">w/o FoSSIL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 6px;"><b>Med_FoSSIL-Disjoint</b></td>
+      <td style="border: 1px solid #ddd; padding: 6px;">16.27M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">16.27M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">0.52T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">0.52T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">4hrs 6mins</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">4hrs 5mins</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 6px;"><b>Med_Semi-Supervised-FoSSIL</b></td>
+      <td style="border: 1px solid #ddd; padding: 6px;">39.59M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">39.59M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">1.1T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">1.1T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">5hrs 18mins</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">5hrs 8mins</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 6px;"><b>Natural-FoSSIL (SAM vit-b)</b></td>
+      <td style="border: 1px solid #ddd; padding: 6px;">88.9M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">88.9M</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">0.37T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">0.37T</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">1hrs 43mins</td>
+      <td style="border: 1px solid #ddd; padding: 6px;">1hrs 35mins</td>
+    </tr>
+  </tbody>
+</table>
 
-    <p>We report the computational analysis for Session 1. The results show that FoSSIL does not incur any additional computational cost while significantly improving performance. To store the prototypes, we consume <em>O(ND)</em> memory, where <em>N</em> is the number of classes and <em>D</em> is the feature dimension, which is significantly smaller than the memory required to store images.</p>
+<p style="margin-top: 10px;">
+We report the computational analysis for Session 1. The results show that FoSSIL does not incur any additional computational cost while significantly improving performance. To store the prototypes, we consume <b>O(ND)</b> memory, where <b>N</b> is the number of classes and <b>D</b> is the feature dimension, which is significantly smaller than the memory required to store images.
+</p>
 
-</body>
-</html>
 <hr>
 
   <h2>Baselines</h2>
