@@ -139,11 +139,15 @@
 <img src="domains.png" alt="Description" class="center-image" />
 
 
-  <div align="center" style="margin-top: 20px;">
-  <a href="https://github.com/anony34/FoSSIL" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-FoSSIL-black?logo=github" alt="GitHub" />
+ <div align="center">
+  <a href="https://anony34.github.io/Fossil_webpage/">
+    <img src="https://img.shields.io/badge/Webpage-Open-blue?logo=google-chrome&logoColor=white" alt="Webpage">
   </a>
- </div>
+  &nbsp;&nbsp;
+  <a href="https://huggingface.co/anony34/FoSSIL">
+    <img src="https://img.shields.io/badge/Hugging%20Face-Model-orange?logo=huggingface" alt="Hugging Face">
+  </a>
+</div>
 
 
   <hr>
@@ -617,6 +621,61 @@ PD (Performance Drop rate) = ((Session 0 − Session 2) / Session 0) × 100.</p>
   </div>
 
     <hr>
+<h2><Cost Analysis</h2>
+    <table>
+        <caption>Cost Analysis</caption>
+        <thead>
+            <tr>
+                <th rowspan="2">Setting</th>
+                <th colspan="2">Parameters</th>
+                <th colspan="2">FLOPs</th>
+                <th colspan="2">Training Time</th>
+            </tr>
+            <tr>
+                <th>FoSSIL</th>
+                <th>w/o FoSSIL</th>
+                <th>FoSSIL</th>
+                <th>w/o FoSSIL</th>
+                <th>FoSSIL</th>
+                <th>w/o FoSSIL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Med_FoSSIL-Disjoint</td>
+                <td>16.27M</td>
+                <td>16.27M</td>
+                <td>0.52T</td>
+                <td>0.52T</td>
+                <td>4hrs 6mins</td>
+                <td>4hrs 5mins</td>
+            </tr>
+            <tr>
+                <td>Med_Semi-Supervised-FoSSIL</td>
+                <td>39.59M</td>
+                <td>39.59M</td>
+                <td>1.1T</td>
+                <td>1.1T</td>
+                <td>5hrs 18mins</td>
+                <td>5hrs 8mins</td>
+            </tr>
+            <tr>
+                <td>Natural-FoSSIL (SAM vit-b)</td>
+                <td>88.9M</td>
+                <td>88.9M</td>
+                <td>0.37T</td>
+                <td>0.37T</td>
+                <td>1hrs 43mins</td>
+                <td>1hrs 35mins</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>We report the computational analysis for Session 1. The results show that FoSSIL does not incur any additional computational cost while significantly improving performance. To store the prototypes, we consume <em>O(ND)</em> memory, where <em>N</em> is the number of classes and <em>D</em> is the feature dimension, which is significantly smaller than the memory required to store images.</p>
+
+</body>
+</html>
+<hr>
 
   <h2>Baselines</h2>
 
